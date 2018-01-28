@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+
+    <style type="text/css">
+      body {margin: 20px;}
+      h1 {color: green;}
+
+    </style>
+
+  </head>
+  <body>
+
+    <h1>Rock Paper Scissors</h1>
+
+    <h2>Press r, p, or s to start playing</h2>
+
+    <h4>User choses: <span id="userChoses"></span></h4>
+    <h4>Computer choses: <span id="computerChoses"></span></h4>
+    <h4>Ties: <span id="ties">0</span></h4>
+    <h4>Wins: <span id="wins">0</span></h4>
+    <h4>Losses: <span id="losses">0</span></h4>
+
+
+    <script type="text/javascript">
+
+      let ties = 0;
+      let wins = 0;
+      let losses = 0;
+      let options = ["r", "p", "s"];
+      let computerOptions = ["r", "p", "s"];
+
+
+      document.onkeyup = function(event) {
+            if (event.key === "r" || event.key === "p" || event.key ==="s") {
+            let userInput = event.key;
+            document.getElementById("userChoses").innerHTML = userInput;
+            let computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+            document.getElementById("computerChoses").innerHTML = computerChoice;
+
+            if (userInput === "r" && computerChoice === "p") {
+              losses++;
+            } else if (userInput === "p" && computerChoice === "r") {
+              wins++;
+            } else if (userInput === computerChoice) {
+              ties++;
+            } else if (userInput === "r" && computerChoice === "s") {
+              wins++;
+            } else if (userInput === "s" && computerChoice === "r") {
+              losses++;
+            } else if (userInput === "p" && computerChoice === "s") {
+              losses++;
+            } else if (userInput === "s" && computerChoice === "p") {
+              wins++;
+            } 
+
+            document.getElementById("ties").innerHTML = ties;
+            document.getElementById("wins").innerHTML = wins;
+            document.getElementById("losses").innerHTML = losses;
+        } 
+      }
+
+    </script>
+  </body>
+</html>
